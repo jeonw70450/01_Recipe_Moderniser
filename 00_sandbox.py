@@ -1,20 +1,31 @@
 #This is a sandbox area where I test out my code.
 
 
-#Not Blank function goes here
+#Defintion
 def recipe(question):
+  error = "Your recipe has numbers in it!"
 
-    valid = False
-    while not valid:
-        response = input(question)
+  valid=False
+  while not valid:
+    response=input(question)
+    has_errors = ""
 
-        if response == "":
-            continue
-        else:
-            return response
+    for letter in response:
+     if letter.isdigit() == True:
+      
+      has_errors = "yes"
+      break
+
+    if response == "":
+      continue
+    elif has_errors != "":
+      print(error)
+      continue
+    else:
+      return response
 
 
-#The main code
-print("Today we are going to make food")
-recipe_name = recipe("What is the recipe name?")
+
+
+recipe_name=recipe("What is the recipe name?")
 print("You are making {}".format(recipe_name))
